@@ -49,4 +49,31 @@
     }
 ```
 
-- HW: follow dry rule in cards html part as well 
+-   HW:
+
+1. Make a filter function
+2. Make a reusable function for cards html code
+
+---
+
+# Day 10
+
+-   Anonymous fn
+-   how to call anonymous fn. 1. (fn)() wrap, 2. store in a variable
+-   how to make any filter during call if ($condition). First take a variable and tell then the items local scope issue, we cant use items outside of foreach loop, We need to somehow pass the variable.
+
+```php
+if ($condition($item))
+
+filter($courses,   function ($item) {
+    return $item['price'] < 300;
+});
+```
+
+-   array_filter($array, callback fn)
+-   make folders, views
+-   then controllers and model
+-   give intro to the db, mysql and sqlite
+-   copy mysqli_connect() from MySQLi Procedural from w3school
+    if(isset($conn) && $conn)
+-   create a table

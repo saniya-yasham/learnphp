@@ -5,10 +5,34 @@
 
 <?php
 
-function filter($items, $filter){
-    
-}
+function renderCourses($title, $courses)
+{
+?>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <h1><?= $title ?> (<?= count($courses); ?>)</h1>
+            </div>
+        </div>
+    </div>
 
+    <div class="card-wrapper container d-flex flex-wrap gap-5 mt-5">
+        <?php foreach ($courses as $course): ?>
+            <div class="card" style="width: 18rem;">
+                <img src="https://placehold.co/600x400?text=Hello+World"
+                    class="card-img-top"
+                    alt="<?= $course["name"] ?? ""; ?>">
+                <div class="card-body">
+                    <div class="text-sm text-primary mb-1"><?= $course["category"]; ?></div>
+                    <h5 class="card-title"><?= $course["name"] ?? ""; ?></h5>
+                    <p class="card-text"><?= $course["description"] ?? ""; ?></p>
+                    <a href="<?= $course["url"] ?? '#'; ?>" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php
+}
 function filterByCategory($items, $category)
 {
     $categoryCourses = [];
@@ -37,65 +61,10 @@ $designCourses = filterByCategory($courses, "Design");
 //         $designCourses[] = $course;
 //     }
 // }
+
+renderCourses("Price == 300", $securityCourses);
+renderCourses("Design Courses", $designCourses);
 ?>
-
-<div class="container mt-3">
-    <div class="row">
-        <div class="col">
-            <h1>Security Courses (<?= count($securityCourses); ?>) </h1>
-        </div>
-    </div>
-</div>
-
-<div class="card-wrapper container d-flex flex-wrap gap-5 mt-5">
-    <?php foreach ($courses as $course): ?>
-        <?php if ($course["category"] === "Security"): ?>
-
-            <div class="card" style="width: 18rem;">
-                <img src="https://placehold.co/600x400?text=Hello+World"
-                    class="card-img-top"
-                    alt="<?= $course["name"] ?? ""; ?>">
-                <div class="card-body">
-                    <div class="text-sm text-primary mb-1"><?= $course["category"]; ?></div>
-                    <h5 class="card-title"><?= $course["name"] ?? ""; ?></h5>
-                    <p class="card-text"><?= $course["description"] ?? ""; ?></p>
-                    <a href="<?= $course["url"] ?? '#'; ?>" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        <?php endif; ?>
-
-    <?php endforeach; ?>
-</div>
-
-<!-- /* ---------------------------------------------------------------- Design Category --------------------------------------------------------------- */ -->
-<div class="container mt-3">
-    <div class="row">
-        <div class="col">
-            <h1>Design Courses (<?= count($designCourses); ?>) </h1>
-        </div>
-    </div>
-</div>
-
-<div class="card-wrapper container d-flex flex-wrap gap-5 mt-5">
-
-    <?php foreach ($courses as $course): ?>
-        <?php if ($course["category"] === "Design"): ?>
-
-            <div class="card" style="width: 18rem;">
-                <img src="https://placehold.co/600x400?text=Hello+World"
-                    class="card-img-top"
-                    alt="<?= $course["name"] ?? ""; ?>">
-                <div class="card-body">
-                    <div class="text-sm text-primary mb-1"><?= $course["category"]; ?></div>
-                    <h5 class="card-title"><?= $course["name"] ?? ""; ?></h5>
-                    <p class="card-text"><?= $course["description"] ?? ""; ?></p>
-                    <a href="<?= $course["url"] ?? '#'; ?>" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        <?php endif; ?>
-
-    <?php endforeach; ?>
-</div>
 
 <?php
 @include_once('footer.php');
