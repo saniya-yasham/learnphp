@@ -1,52 +1,79 @@
-# Day 8
+# Git & GitHub Setup Guide for PHP Projects
 
-    Holiday
+Follow these steps to set up Git and GitHub for your PHP development workflow.
 
 ---
 
-# Day 9
+## 1. Install Git
 
--   how to add values in array after initializing them
+- **Windows:** [Download Git for Windows](https://git-scm.com/download/win)
+- **macOS:**  
+    ```sh
+    brew install git
+    ```
+- **Linux:**  
+    ```sh
+    sudo apt update
+    sudo apt install git
+    ```
 
-```php
-        $arr = []; //initialize array
-        print_r($arr);
+---
 
-        echo "<pre><h1>";
-        print_r($arr);
-        echo "</h1></pre>";
+## 2. Configure Git (One Time)
 
-        $arr[] = 10;
-        $arr[5] = "5th position";
-        $arr["name"] = "Web";
-        $arr[1] = ["name"=> "Web development"];
-        $arr[1] = $newArr;
+Replace the placeholders with your actual name and email:
 
+```sh
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
 ```
 
--   make nested array big , don't tell them about added category
--   @include(data.php); @include(header.php); @include(footer.php)
--   @include_once , DRY rule
--   category in courses, show them
--   how to show only a specific category if ($course['category'] == "Security"):
--   show category heading and print number of available courses
--   ask about issue of count($courses),
--   create $securityCourses, and add in it only particular category courses using foreach and if
--   create another $marketingCourses same as above
--   now follow DRY rule and move the code into fn
+---
 
-```php
-    function filterByCategory($items, $category)
-    {
-        $categoryItems = []; //initialize array
-        foreach ($items as $item) {
-            if ($item['category'] == $category) {
-                $categoryItems[] = $item;
-            }
-        }
+## 3. Create a GitHub Account & Repository
 
-        return $categoryItems;
-    }
+1. Go to [GitHub](https://github.com) and sign up (if you don't have an account).
+2. After signing in, click **"New repository"** and create a new repo (public or private).
+
+---
+
+## 4. Connect Your Local Project to GitHub
+
+```sh
+cd your-project-folder
+git init
+git remote add origin https://github.com/your-username/your-repo.git
 ```
 
-- HW: follow dry rule in cards html part aas well 
+---
+
+## 5. Basic Git Commands
+
+- **Check status:**  
+    ```sh
+    git status
+    ```
+- **Stage all files:**  
+    ```sh
+    git add .
+    ```
+- **Commit changes:**  
+    ```sh
+    git commit -m "First commit"
+    ```
+- **Push to GitHub:**  
+    ```sh
+    git push -u origin main
+    ```
+
+---
+
+## 6. Clone an Existing Repository
+
+```sh
+git clone https://github.com/username/repo.git
+```
+
+---
+
+You’re all set! You can now use Git and GitHub for your PHP projects.

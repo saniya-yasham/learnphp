@@ -1,94 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+@include_once('header.php');
+@include("courses.php");
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 8</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-</head>
+<?php
 
-<body>
-    <?php
-    @include('data.php');
-    ?>
+function filter($items, $filter){
+    
+}
 
-    <?php echo count($courses); ?>
-
-
-
-    <?php
-
-    function filterByCategory($items, $category)
-    {
-        $categoryItems = []; //initialize array
-        foreach ($items as $item) {
-            if ($item['category'] == $category) {
-                $categoryItems[] = $item;
-            }
+function filterByCategory($items, $category)
+{
+    $categoryCourses = [];
+    foreach ($items as $item) {
+        if ($item['category'] === $category) {
+            $categoryCourses[] = $item;
         }
-
-        return $categoryItems;
     }
 
-    // $securityCourses = []; //initialize array
-    // $marketingCourses = []; //initialize array
+    return $categoryCourses;
+}
 
-    // foreach ($courses as $course) {
-    //     if ($course['category'] == "Security") {
-    //         $securityCourses[] = $course;
-    //     }
-    // }
-    // foreach ($courses as $course) {
-    //     if ($course['category'] == "Marketing") {
-    //         $marketingCourses[] = $course;
-    //     }
-    // }
+$securityCourses = filterByCategory($courses, "Security");
+$designCourses = filterByCategory($courses, "Design");
 
-    $securityCourses = filterByCategory($courses, "Security");
-    $marketingCourses = filterByCategory($courses, "Marketing");
+// foreach ($courses as $course) {
+//     if ($course["category"] === "Security") {
+//         $securityCourses[] = $course;
+//     }
+// }
 
+// design category filter
 
-    ?>
+// foreach ($courses as $course) {
+//     if ($course["category"] === "Design") {
+//         $designCourses[] = $course;
+//     }
+// }
+?>
 
-    <h1>Security Course <?= count($securityCourses); ?> </h1>
-    <div class="card-wrapper container d-flex flex-wrap gap-5 mt-5">
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>Security Courses (<?= count($securityCourses); ?>) </h1>
+        </div>
+    </div>
+</div>
 
-        <?php foreach ($securityCourses as $course): ?>
+<div class="card-wrapper container d-flex flex-wrap gap-5 mt-5">
+    <?php foreach ($courses as $course): ?>
+        <?php if ($course["category"] === "Security"): ?>
 
             <div class="card" style="width: 18rem;">
                 <img src="https://placehold.co/600x400?text=Hello+World"
                     class="card-img-top"
                     alt="<?= $course["name"] ?? ""; ?>">
                 <div class="card-body">
+                    <div class="text-sm text-primary mb-1"><?= $course["category"]; ?></div>
                     <h5 class="card-title"><?= $course["name"] ?? ""; ?></h5>
                     <p class="card-text"><?= $course["description"] ?? ""; ?></p>
                     <a href="<?= $course["url"] ?? '#'; ?>" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-            <br>
-        <?php endforeach; ?>
+        <?php endif; ?>
+
+    <?php endforeach; ?>
+</div>
+
+<!-- /* ---------------------------------------------------------------- Design Category --------------------------------------------------------------- */ -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>Design Courses (<?= count($designCourses); ?>) </h1>
+        </div>
     </div>
+</div>
 
-    <!-- /* ------------------------------------------------------------------------------------------------------------------------------------------------ */ -->
+<div class="card-wrapper container d-flex flex-wrap gap-5 mt-5">
 
-    <h1>Marketing Course <?= count($marketingCourses); ?></h1>
-    <div class="card-wrapper container d-flex flex-wrap gap-5 mt-5">
-
-        <?php foreach ($marketingCourses as $course): ?>
+    <?php foreach ($courses as $course): ?>
+        <?php if ($course["category"] === "Design"): ?>
 
             <div class="card" style="width: 18rem;">
                 <img src="https://placehold.co/600x400?text=Hello+World"
                     class="card-img-top"
                     alt="<?= $course["name"] ?? ""; ?>">
                 <div class="card-body">
+                    <div class="text-sm text-primary mb-1"><?= $course["category"]; ?></div>
                     <h5 class="card-title"><?= $course["name"] ?? ""; ?></h5>
                     <p class="card-text"><?= $course["description"] ?? ""; ?></p>
                     <a href="<?= $course["url"] ?? '#'; ?>" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-        <?php endforeach; ?>
-    </div>
-</body>
+        <?php endif; ?>
 
-</html>
+    <?php endforeach; ?>
+</div>
+
+<?php
+@include_once('footer.php');
+?>
+
+<!-- DRY - DO NOT repeat yourself -->
