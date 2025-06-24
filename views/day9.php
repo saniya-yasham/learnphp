@@ -31,8 +31,27 @@ function renderCourses($title, $courses)
             </div>
         <?php endforeach; ?>
     </div>
+
 <?php
 }
+?>
+
+
+<?php
+
+// function filter($items, $key, $filter)
+// {
+//     $filteredCourses = [];
+//     foreach ($items as $key => $item) {
+//         if ($item[$key] == $filter) {
+//             $filteredCourses[] = $item;
+//         }
+//     }
+
+//     return $filteredCourses;
+// }
+
+
 function filterByCategory($items, $category)
 {
     $categoryCourses = [];
@@ -47,23 +66,33 @@ function filterByCategory($items, $category)
 
 $securityCourses = filterByCategory($courses, "Security");
 $designCourses = filterByCategory($courses, "Design");
+// $priceCourses = filter($courses, "price", 300);
+
+
+renderCourses("Security Courses", $securityCourses);
+renderCourses("Design Courses", $designCourses);
+
+
+// renderCourses("Price == 300", $priceCourses);
+
+
+
 
 // foreach ($courses as $course) {
-//     if ($course["category"] === "Security") {
-//         $securityCourses[] = $course;
-//     }
+// if ($course["category"] === "Security") {
+// $securityCourses[] = $course;
+// }
 // }
 
 // design category filter
 
 // foreach ($courses as $course) {
-//     if ($course["category"] === "Design") {
-//         $designCourses[] = $course;
-//     }
+// if ($course["category"] === "Design") {
+// $designCourses[] = $course;
+// }
 // }
 
-renderCourses("Price == 300", $securityCourses);
-renderCourses("Design Courses", $designCourses);
+
 ?>
 
 <?php
