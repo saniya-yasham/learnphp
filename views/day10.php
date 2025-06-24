@@ -64,28 +64,12 @@ $priceCourses = array_filter(
 
 renderCourses("Price < 300", $priceCourses);
 
-
-
-
-
-
-
 $securityCourses = filterByCategory($courses, "Security");
 $designCourses = filterByCategory($courses, "Design");
-
-
-
 
 //view
 renderCourses("Security Courses", $securityCourses);
 renderCourses("Design Courses", $designCourses);
 
-?>
-
-
-
-
-
-<?php
 @include_once('layouts/footer.php');
 ?>

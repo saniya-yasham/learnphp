@@ -73,7 +73,43 @@ filter($courses,   function ($item) {
 -   array_filter($array, callback fn)
 -   make folders, views
 -   then controllers and model
+
+---
+
+# Day 11
+
 -   give intro to the db, mysql and sqlite
--   copy mysqli_connect() from MySQLi Procedural from w3school
-    if(isset($conn) && $conn)
--   create a table
+-   create a table (just add name, type, length)
+-   CRUD commads
+    `INSERT INTO courses () VALUES ();`
+    `SELECT * FROM courses;`
+    `UPDATE courses SET fees = 3500 WHERE name = 'PHP';`
+    `DELETE FROM courses WHERE name = 'PHP';`
+
+```php
+$conn = mysqli_connect("localhost", "root", "", "learn_php");
+
+if(isset($conn) && $conn ) {
+    echo   "DB connected !";
+}
+else{
+    echo "failed";
+}
+
+```
+
+```php
+courses.php model
+@require_once("../database.php");
+
+
+$sql = "SELECT * FROM `courses`";
+$result = $conn->query($sql);
+
+$courses = $result->fetch_assoc();
+
+while ($row = $result->fetch_assoc()) {
+    $courses[] = $row;
+}
+
+```
