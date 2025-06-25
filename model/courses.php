@@ -1,12 +1,18 @@
 <?php
+
+// database = learnphp , no space allowed
+//     table = many tables
+//         rows,columns = data store 
+
+
 $courses = [
     [
-        "name" => "Web Development",
-        "duration" => "3 months",
-        "price" => 300,
+        "name" => "Web Development", // unique 
+        "duration" => "3 months", 
+        "price" => 300, // index
         "description" => "Learn HTML, CSS, and JavaScript to build modern websites.",
         "url" => "web.com",
-        "category" => "Programming"
+        "category" => "Programming" // index
     ],
     [
         // "name" => "Data Science",
