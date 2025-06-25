@@ -86,6 +86,10 @@ filter($courses,   function ($item) {
     `UPDATE courses SET fees = 3500 WHERE name = 'PHP';`
     `DELETE FROM courses WHERE name = 'PHP';`
 
+---
+
+# Day 12
+
 ```php
 $conn = mysqli_connect("localhost", "root", "", "learn_php");
 
