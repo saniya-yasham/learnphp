@@ -117,3 +117,65 @@ while ($row = $result->fetch_assoc()) {
 }
 
 ```
+
+---
+
+# Day 13
+
+```php
+class Poha
+{
+    public $salt = "Pink Salt"; //property
+}
+$obj = new Poha();
+echo "<h1>" . $obj->salt . "</h1>";
+```
+
+### Accessibility
+public: anywhere - (inside the class, in subclasses, and from outside code)
+
+protected: family - within the class itself and its subclasses
+
+private: vault/locker - within the class that declares it
+
+### 1 
+```php
+class BowlOfPoha
+{
+    public $salt = "Pink Salt"; //property
+}
+
+
+$obj = new BowlOfPoha();
+```
+
+### 2
+```php
+    public $type = "";
+
+    public function describe ($type){ //method
+        echo "This is $type Poha";
+    }
+    $obj = new BowlOfPoha();
+    echo "<h1>" . $obj->describe("Special") . "</h1>";
+```
+
+### 3 -Chhnge value of property
+`$obj->type = "yellow";  // method 1(outside class)`
+`public function __construct($salt, $type) { $this->type = $type; } // inside class` 
+
+### 4 - Getters and Setters
+```php
+  // Getter method
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    // Setter method
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+    }
+```
+

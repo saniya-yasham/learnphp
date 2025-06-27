@@ -1,4 +1,51 @@
 <?php
+
+
+class BowlOfPoha
+{
+    public $salt = "Pink Salt"; //property
+    public $type = "";
+
+    public function __construct($type){
+        $this->type =  $type;
+    }
+  // Getter method
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    // Setter method
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+    }
+    public function describe (){ //method
+        echo "This is $this->type Poha";
+    }
+
+}
+
+
+$obj = new BowlOfPoha("Yellow");
+
+$obj->setSalt("Rock Salt");
+echo "<h1>Type=" . $obj->describe() . "</h1>";
+echo "<h1>getters =" . $obj->getSalt() . "</h1>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // logic
 function renderCourses($title, $courses)
 {

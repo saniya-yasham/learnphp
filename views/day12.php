@@ -3,6 +3,10 @@
 @include_once("../model/courses.php"); //data
 @include_once("../controllers/day10Controller.php");
 
+
+
+
+
 //anonymous function
 $priceCourses = array_filter(
     $courses,
