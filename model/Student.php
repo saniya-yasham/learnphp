@@ -14,7 +14,7 @@ class Student
         $this->conn = $conn;
     }
 
-    public static function all()
+    public function all()
     {
         $sql = "SELECT * FROM `courses`";
         $result = $this->conn->query($sql);
