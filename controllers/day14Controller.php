@@ -8,29 +8,27 @@
 
 trait Servable
 {
-    function intro()
+    public function intro()
     {
-        echo "I'm servable dish";
-    }
-}
-trait Servable1
-{
-    function intro()
-    {
-        echo "I'm servable1 dish";
+        echo "This dish is servable";
     }
 }
 
+
+// function = variables/functions
+// class = properties/methods
 
 class Poha //base class
 {
-    use Servable, Servable1;
+    use Servable;
 
     const RESTAURANT_NAME = "Burger King";
 
     public $salt = "Regular Salt";
     protected $spices = "Turmeric";
     private $secretSpice = "Anything";
+
+    public static $staticProperty = 100;
 
     public $type = "property value";
 
@@ -41,11 +39,18 @@ class Poha //base class
 
     public function describe()
     {
-        echo "inside describe methos , constant = " . self::RESTAURANT_NAME;
+        echo "$this->salt inside describe methos , constant = " . self::RESTAURANT_NAME;
     }
     protected function protectedMethod()
     {
         echo "I'm a protected method";
+    }
+
+    //independent - object
+    //dont use $this keyword
+    public static function staticMethod($a, $b)
+    {
+        return $a + $b;
     }
 }
 

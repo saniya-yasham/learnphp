@@ -3,13 +3,29 @@
 
 $sql = "SELECT * FROM `courses`";
 $result = $conn->query($sql);
-// print_r($result);
 
-// $courses = $result->fetch_assoc();
 
 while ($result->fetch_assoc()) {
     $courses[] = $result->fetch_assoc();
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // echo "<pre><h1>";
 // var_dump($courses);
